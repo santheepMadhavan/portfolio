@@ -1,12 +1,40 @@
-# React + Vite
+# Santheep Madhavan – Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Personal portfolio of a design-led Senior Frontend Engineer & UX Designer.
+Built with React 19, Vite 6, Tailwind CSS 4 and React Router 7 (hash routing, so it works on GitHub Pages).
 
-Currently, two official plugins are available:
+**Live:** https://santheepmadhavan.github.io/portfolio/
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Highlights
 
-## Expanding the ESLint configuration
+- **Dev Mode** – the toggle in the toolbar (or press `D`) turns the page into an inspector: selection boxes, measured sizes and the real computed CSS of each element.
+- Light and dark themes (follows the system, remembers the choice).
+- All content lives in `src/data/`, not in components.
+- Self-hosted variable fonts (Bricolage Grotesque, Geist, Geist Mono); no third-party requests.
 
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Develop
+
+```bash
+npm install
+npm run dev      # http://localhost:5173/portfolio/
+npm run lint
+npm run build
+npm run preview
+```
+
+## Update the content
+
+| What | File |
+| --- | --- |
+| Name, intro, links | `src/data/profile.js` |
+| Work history | `src/data/experience.js` |
+| Skills | `src/data/skills.js` |
+| Projects and the Hotstar case study | `src/data/projects.js` |
+| Certification and education | `src/data/credentials.js` |
+| Resume PDF | `public/Santheep_Madhavan_Resume.pdf` |
+
+## Deploy
+
+```bash
+npm run deploy   # builds, then publishes dist/ to the gh-pages branch
+```

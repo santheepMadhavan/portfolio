@@ -1,30 +1,36 @@
-import './App.css'
-import Header from './components/header/header'
-import About from './components/about/about'
-import { BrowserRouter, Routes, Route, Navigate, HashRouter } from "react-router";
-import Work from './components/work/work';
-import Project from './components/project/project';
+import { lazy, Suspense, useEffect } from 'react'
+import { HashRouter, Route, Routes, useLocation } from 'react-router'
+import Header from './components/Header'
+import Home from './components/Home'
+import NotFound from './components/NotFound'
+import ScrollProgress from './fx/ScrollProgress'
+import DevProvider from './lib/DevProvider'
 
-function App() {
-
-  return (
-    <div className='flex p-8 h-screen justify-center bg-gray-100'>
-      <div className='xl:w-4/6 w-full max-w-[1050px] border-8 rounded-4xl overflow-auto sm:p-8 p-4 px-8 sm:px-12 border-white bg-[#f5f5f5]'>
-        <HashRouter>
-        <Header />
-          <Routes>
-            {/* <Route  element={<About />} /> */}
-            <Route path="/" index element={<Navigate to="/about" replace />} /> 
-            <Route path="/about" element={<About />} />
-            <Route path="/work" element={<Work />} />
-            <Route path="/work/:title" element={<Project />} />
-            <Route path="/*" element={<Navigate to="/about" replace />} />
-          </Routes>
-        </HashRouter>
-
-      </div>
-    </div>
-  )
+function ScrollToTop() {
+  const { pathname, state } = useLocation()
+  useEffect(() => {
+    if (!state?.scrollTo) window.scrollTo({ top: 0 })
+  }, [pathname, state])
+  return null
 }
 
-export default App
+const Scene = lazy(() => import('./components/Scene'))
+
+export default function App() {
+  return (
+    <HashRouter>
+      <DevProvider>
+        <ScrollToTop />
+        <Suspense fallback={null}>
+          <Scene />
+        </Suspense>
+        <ScrollProgress />
+        <Header />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </DevProvider>
+    </HashRouter>
+  )
+}
