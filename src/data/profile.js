@@ -20,6 +20,6 @@ export const profile = {
   links: {
     linkedin: 'https://www.linkedin.com/in/santheep18',
     github: 'https://github.com/santheepMadhavan',
-    resume: `${import.meta.env.BASE_URL}Santheep_Madhavan_Resume.pdf`,
+    resume: 'https://canva.link/x92q9zxls4m31od',
   },
 }

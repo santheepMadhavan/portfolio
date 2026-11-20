@@ -27,7 +27,7 @@ export default function Contact() {
             GitHub
           </a>
           <a href={profile.links.resume} target="_blank" rel="noreferrer" className={linkClass}>
-            Resume (PDF)
+            Resume
           </a>
         </div>
       </Inspect>
